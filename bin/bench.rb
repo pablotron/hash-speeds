@@ -2,8 +2,11 @@
 # frozen_string_literal: true
 
 #
-# gen.rb: Generate hash benchmarks using `openssl speed` and write them
-# to standard output as JSON.
+# bench.rb: Generate hash benchmarks using `openssl speed` and write
+# them to standard output as JSON.
+#
+# The output of this command should be fed into bin/plot.py to generate
+# an SVG chart of the results.
 #
 # Note to self: use the following command to benchmark the compiled
 # version of OpenSSL 3.0.3:
@@ -11,7 +14,7 @@
 #   # generate stats
 #   SSL_DIR=$HOME/src/openssl-3.0.3
 #   export LD_LIBRARY_PATH="$SSL_DIR" PATH="$SSL_DIR/apps:$PATH"
-#   $ ./gen.rb > data/flex-0.json
+#   bundle exec bin/bench.rb > data/flex-0.json
 # 
 
 # load libraries
