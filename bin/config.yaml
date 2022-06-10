@@ -41,7 +41,7 @@ bench:
 # plot config
 plot:
   # plot title format string
-  title: "Hash Algorithm Speed by Buffer Size ({arch} {model})"
+  title: "Hash Algorithm Speed ({arch} {model})"
 
   # X axis label
   x_label: "Hash Algorithm"
