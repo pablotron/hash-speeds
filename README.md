@@ -80,9 +80,15 @@ bundle exec bin/bench.rb | \
   minify --type svg > results.min.svg
 ```
 
+## Results
+
+Example results:
+
+![x86-64 Results](data/flex-0.svg)
+![ARM Results](data/cherry-0.svg)
+
 [openssl]: https://www.openssl.org/
   "Cryptography and TLS toolkit."
-[blake2]:
 [md5]: https://en.wikipedia.org/wiki/MD5
   "MD5 cryptographic hash function (broken, don't use)."
 [sha1]: https://en.wikipedia.org/wiki/SHA-1
