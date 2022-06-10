@@ -40,8 +40,8 @@ bench:
 
 # plot config
 plot:
-  # plot title
-  title: "Hash Algorithm Speed by Buffer Size"
+  # plot title format string
+  title: "Hash Algorithm Speed by Buffer Size ({arch} {model})"
 
   # X axis label
   x_label: "Hash Algorithm"
@@ -58,6 +58,19 @@ plot:
 
   # output dimensions (inches)
   output_size: [10, 5]
+
+  # friendly cpu names (optional)
+  #
+  # Note: Intel uses ridiculously long vendor and model names, so this
+  # section lets us remap them to something more sane.
+  names:
+    # friendly architecture names
+    arches:
+      "x86_64": "x86-64"
+
+    # friendly CPU model names
+    models:
+      "11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz": "i7-1185G7"
 
   # buffer sizes (names and colors)
   buffer_sizes:
