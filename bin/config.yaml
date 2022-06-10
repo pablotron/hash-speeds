@@ -1,0 +1,100 @@
+---
+# benchmark config
+bench:
+  # hash algorithms to benchmark
+  hashes:
+  - id: "md5"
+    name: "md5"
+
+  - id: "sha1"
+    name: "sha1"
+
+  - id: "sha256"
+    name: "sha256"
+
+  - id: "sha512"
+    name: "sha512"
+
+  - id: "blake2s256"
+    name: "blake2s"
+
+  - id: "blake2b512"
+    name: "blake2b"
+
+  - id: "sha3-256"
+    name: "sha3-256"
+
+  - id: "sha3-512"
+    name: "sha3-512"
+
+  # commands
+  commands:
+    # get cpu details
+    lscpu: ["lscpu", "--json"]
+
+    # get openssl version and build details
+    openssl: ["openssl", "version", "-a"]
+
+    # benchmark command
+    bench: ["openssl", "speed", "-mr", "-evp"]
+
+# plot config
+plot:
+  # plot title
+  title: "Hash Algorithm Speed by Buffer Size"
+
+  # X axis label
+  x_label: "Hash Algorithm"
+
+  # Y axis label
+  y_label: "Speed (MB/s)"
+
+  legend:
+    # legend title
+    title: "Buffer Size"
+
+    # legend location
+    loc: "upper right"
+
+  # output dimensions (inches)
+  output_size: [10, 5]
+
+  # buffer sizes (names and colors)
+  buffer_sizes:
+  - name: "16 bytes"
+    color: "#00aaffff"
+
+  - name: "64 bytes"
+    color: "#0099ddff"
+
+  - name: "256 bytes"
+    color: "#0077ccff"
+
+  - name: "1 kB"
+    color: "#0055aaff"
+
+  - name: "8 kB"
+    color: "#003399ff"
+
+  - name: "16 kB"
+    color: "#001177ff"
+
+  # alternate buffer sizes color scheme
+  alt_buffer_sizes:
+  - name: "16 bytes"
+    color: "#00aaffff"
+
+  - name: "64 bytes"
+    color: "#0099ddff"
+
+  - name: "256 bytes"
+    color: "#0077ccff"
+
+  - name: "1 kB"
+    color: "#6655aaff"
+
+  - name: "8 kB"
+    color: "#993399ff"
+
+  - name: "16 kB"
+    color: "#cc1177ff"
