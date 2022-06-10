@@ -15,7 +15,7 @@
 #   SSL_DIR=$HOME/src/openssl-3.0.3
 #   export LD_LIBRARY_PATH="$SSL_DIR" PATH="$SSL_DIR/apps:$PATH"
 #   bundle exec bin/bench.rb > data/flex-0.json
-# 
+#
 
 # load libraries
 require 'json'
@@ -28,16 +28,16 @@ CONFIG = YAML.load_file(File.join(__dir__, 'config.yaml')).freeze
 #
 # Convert string representing bytes/sec to integer MB/s.
 #
-def to_mbs(s)
-  (s.to_f / (2 ** 20)).floor
+def to_mbs(val)
+  (val.to_f / (2 ** 20)).floor
 end
 
 #
 # Convert +F lines from output of `openssl speed -mr` to array of
 # integers representing MB/s.
 #
-def to_data(s)
-  s.strip.split(/:/)[3..].map { |s| to_mbs(s) }
+def to_data(line)
+  line.strip.split(/:/)[3..].map { |s| to_mbs(s) }
 end
 
 # write as json to stdout
@@ -52,13 +52,14 @@ puts JSON({
 
   # run benchmarks, parse results
   results: CONFIG['bench']['hashes'].map do |hash|
-    STDERR.puts hash['id']
+    # log hash ID
+    warn hash['id']
 
     # build benchmark command
     cmd = CONFIG['bench']['commands']['bench'] + [hash['id']]
 
     # run benchmark command, parse result
-    IO.popen(cmd, err: [:child, :out]) do |io|
+    IO.popen(cmd, err: %i[child out]) do |io|
       data = to_data(io.readlines.select { |s| s =~ /^\+F:/ }.first)
       { id: hash['id'], name: hash['name'], data: data }
     end
