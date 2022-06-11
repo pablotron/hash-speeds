@@ -1,7 +1,11 @@
 # Cryptographic Hash Algorithm Benchmarks
 
-Tools to benchmark the following cryptographic hash algorithms using the
-OpenSSL `speed` command, then generate [SVGs][svg] of the results:
+Companion repository to [this post][post] on my blog.
+
+Scripts to benchmark the several cryptographic hash functions using the
+[OpenSSL][] `speed` command and generate [SVGs][svg] of the results.
+
+The hash functions are as follows:
 
 * [MD5][md5]
 * [SHA-1][sha1]
@@ -87,6 +91,17 @@ Example results:
 ![x86-64 Results](data/flex-0.svg)
 ![ARM Results](data/cherry-0.svg)
 
+## Miscellaneous
+
+Repository contents:
+
+* `bin/bench.rb`: Run benchmarks and write results as [JSON][] to
+  standard output.
+* `bin/plot.py`: Read [JSON][]-formatted benchmark results from standard
+  input and write an unminified [SVG][] to standard output.
+* `bin/config.yaml`: Configuration options for both scripts.
+* `data/`: My benchmark results.
+
 [openssl]: https://www.openssl.org/
   "Cryptography and TLS toolkit."
 [md5]: https://en.wikipedia.org/wiki/MD5
@@ -115,3 +130,5 @@ Example results:
   "JavaScript Object Notation"
 [svg]: https://en.wikipedia.org/wiki/Scalable_Vector_Graphics
   "Scalable Vector Graphics"
+[post]: https://pablotron.org/2022/06/10/hash-speeds/
+  "OpenSSL Hash Benchmarks blog post"
